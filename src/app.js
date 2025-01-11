@@ -1,15 +1,11 @@
-import React from 'react';
-import RegistrationForm from './components/RegistrationForm';
-import EventList from './components/EventList';
+import React from "react";
+import "./styles.css";
 
 function App() {
-  const events = ["Soccer Kick", "Track and Field", "Bible Bowl", "Choir"];
-
   return (
     <div>
-      <h1>Ignite Student Convention</h1>
-      <RegistrationForm />
-      <EventList events={events} />
+      <h1>Welcome to Ignite Student Convention</h1>
+      <p>This is your starting point to build the registration app!</p>
     </div>
   );
 }
