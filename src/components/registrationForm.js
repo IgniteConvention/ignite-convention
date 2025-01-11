@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { collection, addDoc } from "firebase/firestore";
+import db from "../firebaseConfig";
 
 function RegistrationForm() {
   const [formData, setFormData] = useState({
@@ -25,15 +27,20 @@ function RegistrationForm() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Registration Submitted:", formData);
-    // Add Firebase integration to save formData
+    try {
+      await addDoc(collection(db, "registrations"), formData);
+      alert("Registration successful!");
+      setFormData({ schoolName: "", studentName: "", grade: "", events: [] });
+    } catch (error) {
+      console.error("Error adding registration: ", error);
+    }
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2>Registration Form</h2>
+      <h2>Register Here</h2>
       <div>
         <label>School Name:</label>
         <input
