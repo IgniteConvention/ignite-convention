@@ -1,6 +1,6 @@
-import React from "react";
-import RegistrationForm from "./components/RegistrationForm";
-import EventList from "./components/EventList";
+import React from 'react';
+import RegistrationForm from './components/RegistrationForm';
+import EventList from './components/EventList';
 
 function App() {
   const events = ["Soccer Kick", "Track and Field", "Bible Bowl", "Choir"];
