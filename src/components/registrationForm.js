@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { collection, addDoc } from "firebase/firestore";
-import db from "../firebaseConfig";
 
 function RegistrationForm() {
   const [formData, setFormData] = useState({
@@ -27,15 +25,12 @@ function RegistrationForm() {
     }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    try {
-      await addDoc(collection(db, "registrations"), formData);
-      alert("Registration successful!");
-      setFormData({ schoolName: "", studentName: "", grade: "", events: [] });
-    } catch (error) {
-      console.error("Error adding registration: ", error);
-    }
+    console.log("Registration Submitted:", formData);
+    alert("Registration Submitted! Check the console for details.");
+    // Reset form after submission
+    setFormData({ schoolName: "", studentName: "", grade: "", events: [] });
   };
 
   return (
@@ -48,6 +43,7 @@ function RegistrationForm() {
           name="schoolName"
           value={formData.schoolName}
           onChange={handleInputChange}
+          required
         />
       </div>
       <div>
@@ -57,6 +53,7 @@ function RegistrationForm() {
           name="studentName"
           value={formData.studentName}
           onChange={handleInputChange}
+          required
         />
       </div>
       <div>
@@ -66,10 +63,11 @@ function RegistrationForm() {
           name="grade"
           value={formData.grade}
           onChange={handleInputChange}
+          required
         />
       </div>
       <div>
-        <label>Events:</label>
+        <label>Select Events:</label>
         {eventsList.map((event) => (
           <div key={event}>
             <input
