@@ -1,11 +1,7 @@
 import React from "react";
 import RegistrationForm from "./components/RegistrationForm";
-import EventList from "./components/EventList";
-import "./styles.css";
 
 function App() {
-  const events = ["Soccer Kick", "Track and Field", "Bible Bowl", "Choir"];
-
   return (
     <div>
       <header>
@@ -14,7 +10,6 @@ function App() {
       </header>
       <main>
         <RegistrationForm />
-        <EventList events={events} />
       </main>
     </div>
   );
